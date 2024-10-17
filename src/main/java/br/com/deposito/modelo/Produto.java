@@ -24,8 +24,15 @@ public class Produto {
 	private String imagem;
 	private int quantidade;
 	private double valor;
-	private int estoque;
+	private Integer estoque;
 	private double total;
 	private Status Status;
+	
+	public void atualizando(Produto produto) {
+		if(produto.estoque != null) {
+			this.estoque = this.estoque + produto.estoque;
+		}
+		
+	}
 	
 }

@@ -78,4 +78,15 @@ public class ProdutoControle {
 		 produtoServico.excluirProduto(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+	
+	
+	@PutMapping("/estoque")
+	@Operation(summary = "Endpoint responsável pela atualização do estoque do produto.") 
+    @ApiResponse(responseCode = "200",description = " sucesso",content = {
+   		@Content(mediaType = "application.json",schema = @Schema(implementation = ResponseEntity.class))
+    })           
+	public ResponseEntity<Produto>atualizarEstoque(@RequestBody Produto produto){
+		var atualize = produtoServico.atualizarEstoque(produto);
+		return new ResponseEntity<>(atualize,HttpStatus.OK);
+	}
 }

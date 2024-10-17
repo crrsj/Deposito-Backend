@@ -46,6 +46,14 @@ public class ProdutoServico {
 	   public void excluirProduto(Long id) {
 		   produtoRepositorio.deleteById(id);
 	   }
+	   
+	   
+	   @Transactional
+	   public Produto atualizarEstoque(Produto produto) {
+		   var atualizar = produtoRepositorio.getReferenceById(produto.getId());
+		   atualizar.atualizando(produto);
+		   return produtoRepositorio.save(atualizar);
+	   }
 	}
 
    
